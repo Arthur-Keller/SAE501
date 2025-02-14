@@ -69,15 +69,15 @@ Le fichier `named.conf.local` est configuré pour définir les zones DNS suivant
 zone "iut" {
     type master;
     file "/etc/bind/db.iut";
-    allow-transfer { 10.0.0.2; 10.64.0.2; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
-    also-notify { 10.0.0.2; 10.64.0.2; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
+    allow-transfer { 10.0.0.2; 10.0.0.20; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
+    also-notify { 10.0.0.2; 10.0.0.20; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; }; 
 };
 
 zone "10.in-addr.arpa" {
     type master;
-    file "/etc/bind/db.10-ptr";
-    allow-transfer { 10.0.0.2; 10.64.0.2; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
-    also-notify { 10.0.0.2; 10.64.0.2; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
+    file "/etc/bind/db.10-ptr";  # Ce fichier contiendra toutes les informations PTR
+    allow-transfer { 10.0.0.2; 10.0.0.20; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
+    also-notify { 10.0.0.2; 10.0.0.20; 10.64.0.2; 10.64.0.5; 10.128.0.2; 10.128.0.5; 10.192.0.2; 10.192.0.6; 10.192.0.50; };
 };
 ```
 
@@ -171,27 +171,29 @@ Le fichier `db.10-ptr` définit les enregistrements PTR pour la zone inverse. Ex
 
 ```conf
 ;
-; BIND reverse data file for 10.0.0.0/8
+; Zone PTR file for iut
 ;
 $TTL 604800
 @       IN      SOA     ns1.iut. admin.iut. (
-                              2024112503
-                              604800
-                              86400
-                              2419200
-                              604800 )
+                              2024112503    ; Numéro de série
+                              604800        ; Rafraîchissement
+                              86400         ; Réessai
+                              2419200       ; Expiration
+                              604800 )      ; Cache négatif TTL
 
 @        IN      NS      ns1.iut.
 @        IN      NS      ns2.iut.
 
-2       IN      PTR     ns1.afrique.iut.
-20      IN      PTR     ns2.afrique.iut.
-2       IN      PTR     ns1.amerique.iut.
-5       IN      PTR     ns2.amerique.iut.
-2       IN      PTR     ns1.asie.iut.
-5       IN      PTR     ns2.asie.iut.
-2       IN      PTR     ns1.mandarine.iut.
-6       IN      PTR     ns2.mandarine.iut.
+2.0.0       IN      PTR     ns1.afrique.iut.
+20.0.0      IN      PTR     ns2.afrique.iut.
+2.0.64      IN      PTR     ns1.amerique.iut.
+5.0.64      IN      PTR     ns2.amerique.iut.
+2.0.128     IN      PTR     ns1.asie.iut.
+5.0.128     IN      PTR     ns2.asie.iut.
+2.0.192     IN      PTR     ns1.mandarine.iut.
+6.0.192     IN      PTR     ns2.mandarine.iut.
+5.0.192     IN      PTR     ns2.iut.
+50.0.192    IN      PTR     ns2.iut.
 ```
 
 ## Vérification et Redémarrage

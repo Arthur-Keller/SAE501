@@ -1,4 +1,15 @@
 #!/bin/bash
+
+if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+  echo "Script pour configurer un serveur LDAP et ajouter des données LDIF"
+  echo ""
+  echo "Options :"
+  echo "  --help, -h    Affiche cette aide"
+  echo ""
+  echo "Ce script configure un serveur LDAP, installe OpenLDAP et ajoute des entrées de base LDIF."
+  exit 0
+fi
+
 PASSWORD="admin"
 
 hostnamectl set-hostname ldap

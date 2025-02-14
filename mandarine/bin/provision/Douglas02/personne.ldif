@@ -174,7 +174,7 @@ objectClass: organizationalPerson
 objectClass: inetOrgPerson
 userPassword: halim123
 
-dn: uid=gabriel.soufflet,ou=users-informatique,dc=mandarine,dc=iut
+dn: uid=gabriel.robat,ou=users-informatique,dc=mandarine,dc=iut
 uid: gabriel.robat
 cn: Gabriel Robat
 gecos: Gabriel Robat

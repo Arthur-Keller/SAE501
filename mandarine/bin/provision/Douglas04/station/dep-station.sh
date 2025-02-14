@@ -25,7 +25,7 @@ apt-get update -y && apt-get upgrade -y
 apt-get install -y xfce4 xfce4-goodies
 apt-get install -y thunderbird thunderbird-l10n-fr
 apt-get install -y firefox-esr firefox-esr-l10n-fr
-apt-get install -y pudbus-x11
+apt-get install -y dbus-x11
 
 # Configurer le clavier en français
 sudo setxkbmap fr

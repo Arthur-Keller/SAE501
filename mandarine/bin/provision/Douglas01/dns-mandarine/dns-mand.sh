@@ -89,7 +89,7 @@ zone "iut" {
 };
 
 # Zone inverse pour 10.192.0.0/24 (sous-réseau de mandarine)
-zone "5.0.192.10.in-addr.arpa" {
+zone "10.in-addr.arpa" {
     type slave;
     file "/var/cache/bind/db.10-ptr";
     masters { 10.192.0.5; };
@@ -172,6 +172,7 @@ options {
 
         forwarders {
                 10.192.0.5;  # Adresse du maître pour la résolution externe
+                10.192.0.50;
         };
 
         recursion yes;

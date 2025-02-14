@@ -65,27 +65,26 @@ Le fichier `named.conf.local` est modifié pour définir les zones DNS suivantes
 Contenu du fichier :
 
 ```conf
-# Zone esclave pour le domaine iut
 zone "iut" {
     type slave;
     file "/var/cache/bind/db.iut";
-    masters { 10.192.0.5; };
+    masters { 10.192.0.5; };  # Serveur maître .iut
 };
 
-# Zone inverse pour 10.192.0.0/24
-zone "192.10.in-addr.arpa" {
+# Zone inverse pour 10.192.0.0/24 (sous-réseau de mandarine)
+zone "10.in-addr.arpa" {
     type slave;
-    file "/var/cache/bind/db.10.192-ptr";
+    file "/var/cache/bind/db.10-ptr";
     masters { 10.192.0.5; };
 };
 
-# Zone maîtresse pour mandarine.iut
+# Zone maîtresse pour le sous-domaine mandarine.iut
 zone "mandarine.iut" {
     type master;
-    file "/etc/bind/db.mandarine.iut";
+    file "/etc/bind/db.mandarine.iut";  # Fichier contenant les enregistrements DNS locaux
 };
 
-# Zone inverse pour mandarine.iut
+# Zone maîtresse inverse pour le sous-domaine mandarine.iut
 zone "0.192.10.in-addr.arpa" {
     type master;
     file "/etc/bind/db.0.192.10-ptr";
@@ -98,18 +97,21 @@ Le fichier `named.conf.options` contient les options suivantes :
 
 ```conf
 options {
-    directory "/var/cache/bind";
-    dnssec-validation auto;
-    listen-on-v6 { any; };
+        directory "/var/cache/bind";
+        
+        dnssec-validation auto;
 
-    forwarders {
-        10.192.0.5;  # Serveur maître pour la résolution externe
-    };
+        listen-on-v6 { any; };
 
-    recursion yes;
+        forwarders {
+                10.192.0.5;  # Adresse du maître pour la résolution externe
+                10.192.0.50;
+        };
 
-    allow-query-cache { 192.168.57.0/24; 130.130.0.0/16; 192.168.58.0/24; 10.0.0.0/8; };
-    allow-query { 192.168.57.0/24; 130.130.0.0/16; 192.168.58.0/24; 10.0.0.0/8; };
+        recursion yes;
+
+	allow-query-cache { 192.168.57.0/24; 130.130.0.0/16; 192.168.58.0/24; 10.0.0.0/8; };
+	allow-query { 192.168.57.0/24; 130.130.0.0/16; 192.168.58.0/24; 10.0.0.0/8; };
 };
 ```
 

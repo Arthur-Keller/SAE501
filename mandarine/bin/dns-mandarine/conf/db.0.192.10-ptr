@@ -1,7 +1,7 @@
 ;
 ; BIND reverse data file for 10.192.0.0/24
 ;
-\$TTL    604800
+$TTL    604800
 @       IN      SOA     mandarine.iut. admin.mandarine.iut. (
                               2023101203   ; Numéro de série (YYYYMMDDNN)
                               604800       ; Rafraîchissement (7 jours)

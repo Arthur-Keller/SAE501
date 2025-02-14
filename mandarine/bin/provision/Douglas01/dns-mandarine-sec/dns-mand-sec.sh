@@ -74,6 +74,19 @@ EOF
 # Début de la configuration du DNS mandarine
 # Création des zones dans le fichier named.conf.local 
 cat << TOTO > /etc/bind/named.conf.local
+# Configuration en tant qu'esclave pour le domaine iut
+zone "iut" {
+    type slave;
+    file "/var/cache/bind/db.iut";
+    masters { 10.192.0.5; };  # Serveur maître .iut
+};
+
+zone "10.in-addr.arpa" {
+    type slave;
+    file "/var/cache/bind/db.10-ptr";
+    masters { 10.192.0.5; };
+};
+
 zone "mandarine.iut" {
     type slave;
     file "/var/cache/bind/db.mandarine.iut";

@@ -5,6 +5,20 @@ BASE_DN="dc=mandarine,dc=iut"
 BIND_DN="cn=admin,dc=mandarine,dc=iut"
 BIND_PASSWORD="admin"
 
+# Affiche l'aide si -h ou --help est passé en argument
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "Ce script ajoute un utilisateur LDAP dans une OU spécifique ('users-informatique' ou 'users-administratif')."
+    echo
+    echo "Usage : $0 [option]"
+    echo "Options :"
+    echo "  -h, --help    Affiche cette aide."
+    echo
+    echo "L'utilisateur sera invité à entrer l'UID, choisir un groupe (OU), et définir un mot de passe."
+    echo "Un UID unique sera généré automatiquement, et l'utilisateur sera ajouté dans l'OU choisie."
+    exit 0
+fi
+
+# Lecture des informations utilisateur
 read -p "Entrez l'UID de l'utilisateur (par exemple : john.doe) : " USER_UID
 
 echo "Choisissez l'OU (groupe) de l'utilisateur :"

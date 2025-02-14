@@ -23,14 +23,14 @@ cat << EOF >> /etc/hosts
 192.168.57.5 nfs
 EOF
 
-NAME=$(hostname)
+IP=$(ip -4 addr show eth1 | grep -oP '(?<=inet\s)\d+\.\d+\.\d+')
 
-if [[ "$NAME" == "clientInfo" ]]; then
-    mkdir -p /home/informatique
-    echo "192.168.57.3:/srv/nfs/home/informatique /home/informatique nfs rw,sync,no_subtree_check,no_root_squash 0 0" >> /etc/fstab
-    mount -t nfs 192.168.57.3:/srv/nfs/home/informatique /home/informatique
-elif [[ "$NAME" == "clientAdmin" ]]; then
-    mkdir -p /home/administratif
-    echo "192.168.57.3:/srv/nfs/home/administratif /home/administratif nfs rw,sync,no_subtree_check,no_root_squash 0 0" >> /etc/fstab
-    mount -t nfs 192.168.57.3:/srv/nfs/home/administratif /home/administratif
+if [[ "$IP" == "192.168.57" || "$IP" == "192.168.58" ]]; then
+  mkdir -p /home/informatique
+  echo "192.168.57.3:/srv/nfs/home/informatique /home/informatique nfs rw,sync,no_subtree_check,no_root_squash 0 0" >> /etc/fstab
+  mount -t nfs 192.168.57.3:/srv/nfs/home/informatique /home/informatique
+  mkdir -p /home/administratif
+  echo "192.168.57.3:/srv/nfs/home/administratif /home/administratif nfs rw,sync,no_subtree_check,no_root_squash 0 0" >> /etc/fstab
+  mount -t nfs 192.168.57.3:/srv/nfs/home/administratif /home/administratif
 fi
+

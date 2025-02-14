@@ -142,8 +142,13 @@
 - Modif du README.md
 
 ## 2025/01/21
-- Ce qu'il reste à faire
-    * Finir la mise en place du serveur mail -> sites-avaible
-    * Regarder les ptr du dns iut
-    * regarder les docs
-    * export conf firewall
+- Dernier test de spamassassin pour le serveur mail
+- Mise en place des stations de travail
+- Derniere verification des diférents services
+- Corrections de documentations
+
+## 2025/01/22
+- Correction des PTR pour le dns iut
+- Dernier test avec les machines de travail
+- Corrections de documentations
+- Evaluation avec les profs

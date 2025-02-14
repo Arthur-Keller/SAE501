@@ -7,6 +7,7 @@ options {
 
         forwarders {
                 10.192.0.5;  # Adresse du maître pour la résolution externe
+                10.192.0.50;
         };
 
         recursion yes;

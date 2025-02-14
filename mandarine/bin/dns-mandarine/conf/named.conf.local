@@ -6,7 +6,7 @@ zone "iut" {
 };
 
 # Zone inverse pour 10.192.0.0/24 (sous-réseau de mandarine)
-zone "5.0.192.10.in-addr.arpa" {
+zone "10.in-addr.arpa" {
     type slave;
     file "/var/cache/bind/db.10-ptr";
     masters { 10.192.0.5; };

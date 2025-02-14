@@ -35,7 +35,6 @@
 ## 2024/10/17
 - JMI
 
-
 ## 2024/11/12  
 - Debut de la création du serveur ldap
 
@@ -73,3 +72,31 @@
 
 ## 2024/12/12
 - Script d'automatisation de déploiement ldap et nfs
+
+## 2025/01/06
+- Script ldap (modif/supp/add) 
+
+## 2025/01/07
+- Script ldap (modif/supp/add) 
+
+## 2025/01/08
+- Ecriture de la documentation sur ldap et nfs
+
+## 2025/01/17
+- Reecriture script (--help)
+
+## 2025/01/18
+- Reflexion serveur de backup
+
+## 2025/01/19
+- Commencement serveur backup
+
+## 2025/01/20
+- Documentation station de travail
+
+## 2025/01/21
+- Finalisation serveur backup
+- Adapter la conf des serveurs pour la backup
+
+## 2025/01/22
+- Deploiement du serveur backup

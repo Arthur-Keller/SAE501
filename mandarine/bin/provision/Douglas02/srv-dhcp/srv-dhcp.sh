@@ -39,9 +39,10 @@ apt-get -y install isc-dhcp-server
 ip r add 10.0.0.0/8 via 192.168.57.1 dev eth1
 ip r add 192.168.56.0/22 via 192.168.57.1 dev eth1
 
-cat << DNS > /etc/resolv.conf
+cat << TUTU > /etc/resolv.conf
 nameserver 10.192.0.2
-DNS
+nameserver 10.192.0.6
+TUTU
 
 cat << EOF >> /etc/hosts
 # Partie publique
@@ -60,22 +61,19 @@ EOF
 
 cat << EOF > /etc/dhcp/dhcpd.conf
 # Plage DHCP
-#option rfc3442-classless-static-routes code 121 = array of unsigned integer 8;
 
 subnet 192.168.57.0 netmask 255.255.255.0 {
         range                           192.168.57.20 192.168.57.70;
         option routers                  192.168.57.1;
-#  	option rfc3442-classless-static-routes 8, 10, 0, 0, 192, 168, 57, 1;
-#	option rfc3442-classless-static-routes 22, 192, 168, 56, 192, 168, 57, 1;
-	option domain-name-servers	10.192.0.2;
+	    option domain-name-servers	    10.192.0.2;
+        option domain-name-servers	    10.192.0.6;
 }
 
 subnet 192.168.58.0 netmask 255.255.255.0 {
         range                           192.168.58.20 192.168.58.70;
         option routers                  192.168.58.1;
-#	option rfc3442-classless-static-routes 8, 10, 0, 0, 192, 168, 58, 1;
-#	option rfc3442-classless-static-routes 22, 192, 168, 56, 192, 168, 58, 1;
-	option domain-name-servers	10.192.0.2;
+	    option domain-name-servers	    10.192.0.2;
+        option domain-name-servers	    10.192.0.6;
 }
 EOF
 

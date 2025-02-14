@@ -9,7 +9,61 @@ L'équipe Mandarine est composée des membres suivants :
 
 ---
 
-## Le Projet
+## Le Projet 
+
+### Tâches éxécutées : 
+
+#### Halim BENIA-LATECHE
+
+- Mise en Place de l'infrastructure réseau 
+- DHCP
+- Firewall 
+- Mail
+- Essai VPN 
+- Documentations 
+- Aide générale
+
+#### Adham BERRAKANE
+
+- Mise en Place de l'infrastructure réseau 
+- Serveur NFS 
+- Serveur LDAP
+- client NFS
+- client LDAP
+- Script ldap (create/modif/suppr)
+- Serveur Backup 
+- Automatisation du Déploiement
+- Documentations 
+
+#### Arthur KELLER
+
+- Mise en Place de l'infrastructure réseau 
+- DNS iut
+- DNS mandarine
+- DNS iut secours
+- DNS mandarine secours
+- Mail
+- Web
+- Spamassassin
+- Firewall
+- DHCP
+- Script de provision des machines automatisées
+- Schéma réseau publique et de notre infrastructures
+- Documentations
+- Stations de travail
+- Aide générale
+
+#### Gabriel ROBAT
+
+- Mise en Place de l'infrastructure réseau 
+- Premiet jet LDAP
+- DHCP
+- Firewall
+- Essai Kerberos 
+- Documentations 
+- Aide générale
+
+--- 
 
 ## Les schémas
 
@@ -154,6 +208,8 @@ flowchart BT
 
 - [schéma reseau de l'infrastructure mandarine](./doc/schema-reseau/schema-reseau-mandarine.md)
 
+---
+
 ### Statut d'avancement du projet
 #### Tâches terminées
 
@@ -274,6 +330,9 @@ flowchart BT
 
 #### Stations de Travail
 - [Documentation sur les stations de travail](./doc/stations-travail/stations-travail.md)
+
+#### Serveur Backup (NFS/LDAP)
+- [Documentation sur les stations de travail](./doc/backup/backup.md)
 
 ---
 

@@ -1,7 +1,7 @@
 ;
 ; Zone file for iut
 ;
-\$TTL    604800         ; Time to Live par défaut
+$TTL    604800         ; Time to Live par défaut
 @       IN      SOA     ns1.iut. admin.iut. (
                               2024112502    ; Numéro de série (YYYYMMDDNN)
                               604800       ; Rafraîchissement (7 jours)
@@ -11,7 +11,7 @@
 
 ; Serveurs DNS pour le domaine iut
 @       IN      NS      ns1.iut.          ; Serveur DNS principal
-@	    IN	    NS	    ns2.iut.          ; Serveur DNS secondaire
+@	    IN	    NS	    ns2.iut.
 @       IN      NS      afrique.iut.      ; Serveur secondaire Afrique
 @       IN      NS      amerique.iut.     ; Serveur secondaire Amérique
 @       IN      NS      asie.iut.         ; Serveur secondaire Asie
